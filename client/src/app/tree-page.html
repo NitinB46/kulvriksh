@@ -1,0 +1,80 @@
+<header class="top">
+  <a class="brand" routerLink="/" title="Home">
+    <app-logo tone="dark" />
+    <div>
+      <h1>Kulvriksh</h1>
+      <p>Bhatnagar family tree</p>
+    </div>
+  </a>
+
+  <div class="search">
+    <input type="search" placeholder="Search a name…" [value]="query()" (input)="query.set($any($event.target).value)" aria-label="Search people" />
+    @if (results().length) {
+      <ul class="results">
+        @for (r of results(); track r.id) {
+          <li><button type="button" (click)="pickResult(r.id)">{{ r.p.name }} <span class="muted">{{ lifespan(r.p) }}</span></button></li>
+        }
+      </ul>
+    }
+  </div>
+
+  <div class="auth">
+    @if (api.admin()) {
+      <span class="badge">Admin · edit mode</span>
+      <button type="button" (click)="showManage.set(true)">Manage trees</button>
+      <button type="button" (click)="showUnplaced.set(!showUnplaced())">Unplaced ({{ unplaced().length }})</button>
+      <a class="button" href="/api/backup">Download backup</a>
+      <button type="button" (click)="api.logout()">Log out</button>
+      <a class="button" routerLink="/">Home</a>
+    } @else {
+      <button type="button" (click)="view.showLogin.set(true)">Admin login</button>
+    }
+  </div>
+</header>
+
+<nav class="trees-menu" aria-label="Trees">
+  <button type="button" class="menu-toggle" (click)="menuOpen.set(!menuOpen())" [attr.aria-expanded]="menuOpen()">☰ Trees</button>
+  <div class="tabs" [class.open]="menuOpen()">
+    @for (t of api.trees(); track t.id) {
+      <button type="button" [class.active]="currentTree()?.id === t.id" (click)="openTree(t.id)">
+        {{ t.title }}
+        @if (!t.visible) {
+          <span class="hidden-tag" title="Hidden from the public">hidden</span>
+        }
+      </button>
+    }
+  </div>
+</nav>
+
+<main [class.with-panel]="!!view.selected()">
+  @if (loadError()) {
+    <p class="empty">Could not reach the server. Is it running? (npm run dev)</p>
+  } @else if (!api.data()) {
+    <p class="empty">Loading the family tree…</p>
+  } @else if (currentTree(); as tree) {
+    <app-tree-view [tree]="tree" />
+  } @else {
+    <p class="empty">No trees yet.@if (api.admin()) { Use “Manage trees” to add one. }</p>
+  }
+
+  @if (showUnplaced() && api.admin()) {
+    <aside class="panel left" aria-label="Unplaced people">
+      <button type="button" class="close" (click)="showUnplaced.set(false)" aria-label="Close">✕</button>
+      <h2>Not in any tree</h2>
+      <p class="muted">These people came from the Excel file but the drawing had no clear line to their parents. Open one, choose “Edit details” and set Parent 1 / Parent 2.</p>
+      <ul class="plain">
+        @for (u of unplaced(); track u.id) {
+          <li><button type="button" class="link-button" (click)="view.select(u.id)">{{ u.p.name }}</button> <span class="muted">{{ lifespan(u.p) }}</span></li>
+        } @empty {
+          <li>Everyone is placed. 🎉</li>
+        }
+      </ul>
+    </aside>
+  }
+
+  <app-person-panel />
+</main>
+
+@if (showManage() && api.admin()) {
+  <app-trees-manager (closed)="showManage.set(false)" />
+}

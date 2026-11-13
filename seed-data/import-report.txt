@@ -1,0 +1,14 @@
+[Durga Shankar] cards=119 labels=14 connectors=150 groups=71 photos=156 parent-links=212
+[Ramchandra] cards=47 labels=8 connectors=52 groups=31 photos=28 parent-links=60
+[Ramchandra] dropped 6 repeated header people; branch head attached to main tree: True
+[Raghuvar Dayal] cards=30 labels=2 connectors=32 groups=16 photos=19 parent-links=23
+[Raghuvar Dayal] dropped 6 repeated header people; branch head attached to main tree: True
+[Ramji Das] cards=92 labels=10 connectors=96 groups=61 photos=96 parent-links=142
+[Ramji Das] dropped 6 repeated header people; branch head attached to main tree: True
+[Bhawani Shankar] cards=21 labels=0 connectors=23 groups=18 photos=14 parent-links=31
+[Bhawani Shankar] dropped 6 repeated header people; branch head attached to main tree: True
+merged duplicates across sheets: 2
+CHECK: Ankit had 4 parents drawn; kept the first two
+CHECK: Yogesh had 4 parents drawn; kept the first two
+people=420 trees=6 photos=190 whole-family-root=Rai Dina Nath (256 descendants incl.)
+unlinked people (28): Ishanvi, Ishika, Kushagra, Aishwarya, Prateek, Arav, Shri Shankar, Nirankar Swarup, Shraddha, Mohit, Abhishek, Krishna, Istuti, Avinash, Divyansh, Aahna, Kiyansh, Ajeesh, Aashvi, Elena Maahi, Unknown, Unknown, Unknown, Unknown, Unknown, Unknown, Unknown, Unknown

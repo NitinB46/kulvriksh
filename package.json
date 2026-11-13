@@ -1,0 +1,20 @@
+{
+  "name": "kulvriksh",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Kulvriksh family tree website - prototype (Angular + Node/Express, no database)",
+  "scripts": {
+    "postinstall": "npm --prefix server install && npm --prefix client install",
+    "dev": "concurrently -n api,web -c green,blue \"npm --prefix server run dev\" \"npm --prefix client start -- --open\"",
+    "build": "npm --prefix client run build",
+    "start": "npm run build && npm --prefix server start",
+    "test": "npm --prefix server test",
+    "hash-password": "npm --prefix server run hash-password --"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
