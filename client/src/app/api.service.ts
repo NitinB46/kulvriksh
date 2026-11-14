@@ -11,6 +11,8 @@ export class Api {
 
   readonly data = signal<FamilyData | null>(null);
   readonly admin = signal(false);
+  /** True on the static, read-only copy of the site (no server, no admin). */
+  readonly readOnly = signal(false);
   readonly busy = signal(false);
   readonly message = signal<{ text: string; kind: 'ok' | 'error' } | null>(null);
   readonly kids = computed(() => (this.data() ? childrenIndex(this.data()!) : new Map<string, string[]>()));
@@ -21,8 +23,9 @@ export class Api {
   }
 
   async init() {
-    const s = await firstValueFrom(this.http.get<{ admin: boolean }>('/api/session'));
+    const s = await firstValueFrom(this.http.get<{ admin: boolean; readOnly?: boolean }>('/api/session'));
     this.admin.set(s.admin);
+    this.readOnly.set(!!s.readOnly);
     await this.reload();
   }
 

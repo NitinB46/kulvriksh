@@ -3,3 +3,4 @@ client/dist/
 client/.angular/
 server/.env
 *.log
+public-site/

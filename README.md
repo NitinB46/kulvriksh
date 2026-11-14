@@ -41,6 +41,22 @@ Type the new password when asked. The command prints two lines. Paste them into 
 
 The password itself is never stored. Only its bcrypt hash is kept, in `server/.env`, which never reaches the browser.
 
+## Publish a read-only copy (static hosting)
+
+```bash
+npm run publish-static
+```
+
+This builds `public-site/`, a read-only copy of the public site that any static host can serve (Firebase Hosting, or a Cloud Storage bucket). The data is privacy-filtered exactly as visitors see it, so hidden dates of birth, addresses and hidden trees are left out. The admin login is hidden. Keep editing on your PC, then publish again to update.
+
+**Firebase Hosting** (free, gives `<name>.web.app`): `firebase.json` is already set up.
+
+```bash
+npm install -g firebase-tools
+firebase login
+firebase deploy --only hosting --project <your-firebase-project-id>
+```
+
 ## What you can try
 
 **Home page** (http://localhost:4200):

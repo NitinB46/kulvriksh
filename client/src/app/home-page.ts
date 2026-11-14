@@ -20,7 +20,7 @@ import { Logo } from './logo';
         <a routerLink="/tree" class="nav-link">Family Tree</a>
         @if (api.admin()) {
           <a routerLink="/tree" class="nav-button">Admin · Edit tree</a>
-        } @else {
+        } @else if (!api.readOnly()) {
           <button type="button" class="nav-button" (click)="view.showLogin.set(true)">Admin Login</button>
         }
       </nav>
@@ -105,7 +105,7 @@ import { Logo } from './logo';
 
     <footer class="home-footer">
       <span><app-logo tone="dark" />Kulvriksh · Bhatnagar family tree</span>
-      @if (!api.admin()) {
+      @if (!api.admin() && !api.readOnly()) {
         <button type="button" class="link-button" (click)="view.showLogin.set(true)">Admin Login</button>
       }
     </footer>

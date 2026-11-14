@@ -8,7 +8,8 @@
     "start": "tsx src/index.ts",
     "test": "tsx --test test/*.test.ts",
     "hash-password": "tsx src/hash-password.ts",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "publish-static": "tsx src/publish-static.ts"
   },
   "dependencies": {
     "archiver": "^8.0.0",

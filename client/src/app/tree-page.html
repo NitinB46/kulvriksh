@@ -26,7 +26,7 @@
       <a class="button" href="/api/backup">Download backup</a>
       <button type="button" (click)="api.logout()">Log out</button>
       <a class="button" routerLink="/">Home</a>
-    } @else {
+    } @else if (!api.readOnly()) {
       <button type="button" (click)="view.showLogin.set(true)">Admin login</button>
     }
   </div>

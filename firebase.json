@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "public": "public-site",
+    "cleanUrls": false,
+    "headers": [
+      { "source": "/api/**", "headers": [{ "key": "Content-Type", "value": "application/json" }, { "key": "Cache-Control", "value": "no-cache" }] },
+      { "source": "/photos/**", "headers": [{ "key": "Cache-Control", "value": "public, max-age=86400" }] }
+    ],
+    "rewrites": [{ "source": "**", "destination": "/index.html" }]
+  }
+}

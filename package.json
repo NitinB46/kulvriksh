@@ -9,7 +9,8 @@
     "build": "npm --prefix client run build",
     "start": "npm run build && npm --prefix server start",
     "test": "npm --prefix server test",
-    "hash-password": "npm --prefix server run hash-password --"
+    "hash-password": "npm --prefix server run hash-password --",
+    "publish-static": "npm run build && npm --prefix server run publish-static"
   },
   "devDependencies": {
     "concurrently": "^9.2.1"
