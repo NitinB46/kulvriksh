@@ -3,21 +3,12 @@ import { Api } from './api.service';
 import { ViewState } from './view-state';
 import { cardPlace, initials, isLate, lifespan } from './family';
 import { TreeContext } from './tree-context';
-
-const GARLAND = Array.from({ length: 15 }, (_, i) => {
-  const a = Math.PI * (i / 14); // half circle, left to right through the bottom
-  return {
-    x: +(40 - 36 * Math.cos(a)).toFixed(1),
-    y: +(4 + 34 * Math.sin(a)).toFixed(1),
-    r: i % 2 ? 3 : 4,
-    c: i % 2 ? 'jasmine' : 'marigold',
-  };
-});
+import { Lily } from './lily';
 
 /** One person (plus spouses) in the chart, with a + / − button for their children. */
 @Component({
   selector: 'li[app-tree-node]',
-  imports: [TreeNode],
+  imports: [TreeNode, Lily],
   template: `
     @let p = person();
     @if (p) {
@@ -29,13 +20,6 @@ const GARLAND = Array.from({ length: 15 }, (_, i) => {
             } @else {
               <span class="avatar">{{ initials(p.name) }}</span>
             }
-            @if (isLate(p)) {
-              <svg class="garland" viewBox="0 0 80 44" aria-hidden="true">
-                @for (f of garland; track $index) {
-                  <circle [attr.cx]="f.x" [attr.cy]="f.y" [attr.r]="f.r" [attr.class]="f.c" />
-                }
-              </svg>
-            }
           </span>
           <span class="name">{{ p.name }}</span>
           @if (cardPlace(p); as place) {
@@ -43,6 +27,9 @@ const GARLAND = Array.from({ length: 15 }, (_, i) => {
           }
           @if (lifespan(p); as years) {
             <span class="years">{{ years }}</span>
+          }
+          @if (isLate(p)) {
+            <svg app-lily></svg>
           }
         </button>
         @for (s of spouses(); track s.id) {
@@ -54,13 +41,6 @@ const GARLAND = Array.from({ length: 15 }, (_, i) => {
               } @else {
                 <span class="avatar">{{ initials(s.p.name) }}</span>
               }
-              @if (isLate(s.p)) {
-                <svg class="garland" viewBox="0 0 80 44" aria-hidden="true">
-                  @for (f of garland; track $index) {
-                    <circle [attr.cx]="f.x" [attr.cy]="f.y" [attr.r]="f.r" [attr.class]="f.c" />
-                  }
-                </svg>
-              }
             </span>
             <span class="name">{{ s.p.name }}</span>
             @if (cardPlace(s.p); as place) {
@@ -68,6 +48,9 @@ const GARLAND = Array.from({ length: 15 }, (_, i) => {
             }
             @if (lifespan(s.p); as years) {
               <span class="years">{{ years }}</span>
+            }
+            @if (isLate(s.p)) {
+              <svg app-lily></svg>
             }
           </button>
         }
@@ -99,8 +82,6 @@ export class TreeNode {
   protected lifespan = lifespan;
   protected cardPlace = cardPlace;
   protected isLate = isLate;
-  /** Flowers of a marigold-and-jasmine garland hanging around the lower half of the photo. */
-  protected garland = GARLAND;
 
   protected person = computed(() => this.api.data()?.people[this.id()]);
   protected spouses = computed(() =>
