@@ -64,7 +64,9 @@ def parse_date(s):
 
 
 def is_placeholder(s):
-    return str(s).strip().lower().rstrip('.:') in PLACEHOLDERS
+    s = str(s).strip().lower()
+    # blank date templates such as "_._.__DOB" or "_._.__" left in the sheet
+    return s.rstrip('.:') in PLACEHOLDERS or re.sub(r'[_.\s/-]', '', s) in PLACEHOLDERS or '__' in s
 
 
 class Sheet:
