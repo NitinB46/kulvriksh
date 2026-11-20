@@ -1,7 +1,7 @@
 import { Component, computed, inject, input } from '@angular/core';
 import { Api } from './api.service';
 import { ViewState } from './view-state';
-import { initials, lifespan } from './family';
+import { cardPlace, initials, lifespan } from './family';
 import { TreeContext } from './tree-context';
 
 /** One person (plus spouses) in the chart, with a + / − button for their children. */
@@ -20,6 +20,9 @@ import { TreeContext } from './tree-context';
           }
           <span class="name">{{ p.name }}</span>
           <span class="years">{{ lifespan(p) }}</span>
+          @if (cardPlace(p); as place) {
+            <span class="place">{{ place }}</span>
+          }
         </button>
         @for (s of spouses(); track s.id) {
           <span class="link" aria-hidden="true">♥</span>
@@ -31,6 +34,9 @@ import { TreeContext } from './tree-context';
             }
             <span class="name">{{ s.p.name }}</span>
             <span class="years">{{ lifespan(s.p) }}</span>
+            @if (cardPlace(s.p); as place) {
+              <span class="place">{{ place }}</span>
+            }
           </button>
         }
       </div>
@@ -59,6 +65,7 @@ export class TreeNode {
   protected tree = inject(TreeContext);
   protected initials = initials;
   protected lifespan = lifespan;
+  protected cardPlace = cardPlace;
 
   protected person = computed(() => this.api.data()?.people[this.id()]);
   protected spouses = computed(() =>
