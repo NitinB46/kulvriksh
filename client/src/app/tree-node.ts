@@ -21,13 +21,15 @@ import { Lily } from './lily';
               <span class="avatar">{{ initials(p.name) }}</span>
             }
           </span>
-          <span class="name">{{ p.name }}</span>
-          @if (cardPlace(p); as place) {
-            <span class="place">{{ place }}</span>
-          }
-          @if (lifespan(p); as years) {
-            <span class="years">{{ years }}</span>
-          }
+          <span class="info">
+            <span class="name">{{ p.name }}</span>
+            @if (cardPlace(p); as place) {
+              <span class="place">{{ place }}</span>
+            }
+            @if (lifespan(p); as years) {
+              <span class="years">{{ years }}</span>
+            }
+          </span>
           @if (isLate(p)) {
             <svg app-lily></svg>
           }
@@ -42,13 +44,15 @@ import { Lily } from './lily';
                 <span class="avatar">{{ initials(s.p.name) }}</span>
               }
             </span>
-            <span class="name">{{ s.p.name }}</span>
-            @if (cardPlace(s.p); as place) {
-              <span class="place">{{ place }}</span>
-            }
-            @if (lifespan(s.p); as years) {
-              <span class="years">{{ years }}</span>
-            }
+            <span class="info">
+              <span class="name">{{ s.p.name }}</span>
+              @if (cardPlace(s.p); as place) {
+                <span class="place">{{ place }}</span>
+              }
+              @if (lifespan(s.p); as years) {
+                <span class="years">{{ years }}</span>
+              }
+            </span>
             @if (isLate(s.p)) {
               <svg app-lily></svg>
             }
