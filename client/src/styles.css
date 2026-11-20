@@ -111,6 +111,14 @@ app-tree-view { flex: 1; display: flex; flex-direction: column; min-width: 0; }
 .card .name { font-size: 13px; font-weight: 600; line-height: 1.2; word-break: break-word; }
 .card .years { font-size: 11px; color: var(--muted); }
 .card .place { font-size: 11px; color: var(--muted); max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.portrait { position: relative; display: block; line-height: 0; }
+/* In memory: a classic garland of marigold and jasmine around the photo, a softened photo and a thin gold frame */
+.card.late { box-shadow: inset 0 0 0 3px rgb(255 255 255 / 0.55), inset 0 0 0 4px #c9a45c, 0 2px 6px rgb(15 42 79 / 0.2); }
+.card.late img, .card.late .avatar { filter: grayscale(0.85) sepia(0.2); }
+.card .portrait { margin-bottom: 6px; }
+.garland { position: absolute; left: 50%; bottom: -7px; width: 78px; height: 43px; transform: translateX(-50%); overflow: visible; pointer-events: none; }
+.garland .marigold { fill: #e89a2c; stroke: #c4761a; stroke-width: 0.8; }
+.garland .jasmine { fill: #fffaf0; stroke: #d9cfb8; stroke-width: 0.6; }
 .couple.selected > .card:first-child, .card.selected { outline: 3px solid var(--accent); }
 .toggle { margin-top: 4px; padding: 0 9px; min-width: 32px; height: 22px; border-radius: 99px; font-size: 12px; font-weight: 700; justify-content: center; background: var(--primary); color: #fff; border-color: var(--primary); position: relative; z-index: 1; }
 

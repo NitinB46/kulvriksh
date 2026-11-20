@@ -1,8 +1,18 @@
 import { Component, computed, inject, input } from '@angular/core';
 import { Api } from './api.service';
 import { ViewState } from './view-state';
-import { cardPlace, initials, lifespan } from './family';
+import { cardPlace, initials, isLate, lifespan } from './family';
 import { TreeContext } from './tree-context';
+
+const GARLAND = Array.from({ length: 15 }, (_, i) => {
+  const a = Math.PI * (i / 14); // half circle, left to right through the bottom
+  return {
+    x: +(40 - 36 * Math.cos(a)).toFixed(1),
+    y: +(4 + 34 * Math.sin(a)).toFixed(1),
+    r: i % 2 ? 3 : 4,
+    c: i % 2 ? 'jasmine' : 'marigold',
+  };
+});
 
 /** One person (plus spouses) in the chart, with a + / − button for their children. */
 @Component({
@@ -12,12 +22,21 @@ import { TreeContext } from './tree-context';
     @let p = person();
     @if (p) {
       <div class="couple" [class.selected]="view.selected() === id()" [id]="'node-' + id()">
-        <button type="button" class="card" [class.female]="p.gender === 'F'" (click)="view.select(id())" [title]="p.name">
-          @if (p.photo) {
-            <img [src]="'/' + p.photo" alt="" loading="lazy" />
-          } @else {
-            <span class="avatar">{{ initials(p.name) }}</span>
-          }
+        <button type="button" class="card" [class.female]="p.gender === 'F'" [class.late]="isLate(p)" (click)="view.select(id())" [title]="p.name">
+          <span class="portrait">
+            @if (p.photo) {
+              <img [src]="'/' + p.photo" alt="" loading="lazy" />
+            } @else {
+              <span class="avatar">{{ initials(p.name) }}</span>
+            }
+            @if (isLate(p)) {
+              <svg class="garland" viewBox="0 0 80 44" aria-hidden="true">
+                @for (f of garland; track $index) {
+                  <circle [attr.cx]="f.x" [attr.cy]="f.y" [attr.r]="f.r" [attr.class]="f.c" />
+                }
+              </svg>
+            }
+          </span>
           <span class="name">{{ p.name }}</span>
           @if (cardPlace(p); as place) {
             <span class="place">{{ place }}</span>
@@ -28,12 +47,21 @@ import { TreeContext } from './tree-context';
         </button>
         @for (s of spouses(); track s.id) {
           <span class="link" aria-hidden="true">♥</span>
-          <button type="button" class="card spouse" [class.female]="s.p.gender === 'F'" [class.selected]="view.selected() === s.id" (click)="view.select(s.id)" [title]="s.p.name">
-            @if (s.p.photo) {
-              <img [src]="'/' + s.p.photo" alt="" loading="lazy" />
-            } @else {
-              <span class="avatar">{{ initials(s.p.name) }}</span>
-            }
+          <button type="button" class="card spouse" [class.female]="s.p.gender === 'F'" [class.late]="isLate(s.p)" [class.selected]="view.selected() === s.id" (click)="view.select(s.id)" [title]="s.p.name">
+            <span class="portrait">
+              @if (s.p.photo) {
+                <img [src]="'/' + s.p.photo" alt="" loading="lazy" />
+              } @else {
+                <span class="avatar">{{ initials(s.p.name) }}</span>
+              }
+              @if (isLate(s.p)) {
+                <svg class="garland" viewBox="0 0 80 44" aria-hidden="true">
+                  @for (f of garland; track $index) {
+                    <circle [attr.cx]="f.x" [attr.cy]="f.y" [attr.r]="f.r" [attr.class]="f.c" />
+                  }
+                </svg>
+              }
+            </span>
             <span class="name">{{ s.p.name }}</span>
             @if (cardPlace(s.p); as place) {
               <span class="place">{{ place }}</span>
@@ -70,6 +98,9 @@ export class TreeNode {
   protected initials = initials;
   protected lifespan = lifespan;
   protected cardPlace = cardPlace;
+  protected isLate = isLate;
+  /** Flowers of a marigold-and-jasmine garland hanging around the lower half of the photo. */
+  protected garland = GARLAND;
 
   protected person = computed(() => this.api.data()?.people[this.id()]);
   protected spouses = computed(() =>

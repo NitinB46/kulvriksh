@@ -15,10 +15,14 @@ export function year(d?: string): string {
   return d ? d.slice(0, 4) : '';
 }
 
+/** True when the person has passed away (a death date or place is recorded). */
+export function isLate(p: Person): boolean {
+  return !!(p.death?.date || p.death?.place);
+}
+
 /** Place shown on a card: where they died if they have passed away, otherwise where they were born. */
 export function cardPlace(p: Person): string {
-  const dead = !!(p.death?.date || p.death?.place);
-  return (dead ? p.death?.place : p.birth?.place)?.trim() ?? '';
+  return (isLate(p) ? p.death?.place : p.birth?.place)?.trim() ?? '';
 }
 
 export function lifespan(p: Person): string {
