@@ -112,10 +112,9 @@ app-tree-view { flex: 1; display: flex; flex-direction: column; min-width: 0; }
 .card .years { font-size: 11px; color: var(--muted); }
 .card .place { font-size: 11px; color: var(--muted); max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .portrait { position: relative; display: block; line-height: 0; }
-/* In memory: a white lily at the foot of the card, a softened photo and a thin gold frame */
-.card.late { box-shadow: inset 0 0 0 3px rgb(255 255 255 / 0.55), inset 0 0 0 4px #c9a45c, 0 2px 6px rgb(15 42 79 / 0.2); }
+/* In memory: a spray of white lilies on a soft cream band at the foot of the card, and a softened photo */
 .card.late img, .card.late .avatar { filter: grayscale(0.85) sepia(0.2); }
-.lily { width: 26px; height: 26px; margin-top: auto; flex: none; }
+.lily-spray { flex: none; width: calc(100% + 12px); height: 30px; margin: auto -6px -8px; background: linear-gradient(transparent, #fbf6ea); border-radius: 0 0 9px 9px; }
 .couple.selected > .card:first-child, .card.selected { outline: 3px solid var(--accent); }
 .toggle { margin-top: 4px; padding: 0 9px; min-width: 32px; height: 22px; border-radius: 99px; font-size: 12px; font-weight: 700; justify-content: center; background: var(--primary); color: #fff; border-color: var(--primary); position: relative; z-index: 1; }
 
