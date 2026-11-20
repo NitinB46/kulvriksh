@@ -103,7 +103,7 @@ app-tree-view { flex: 1; display: flex; flex-direction: column; min-width: 0; }
 
 .couple { display: flex; align-items: stretch; gap: 2px; padding: 4px; border-radius: 14px; background: rgb(255 255 255 / 0.7); border: 1px solid #9fbbe0; }
 .couple .link { color: #c4566e; font-size: 12px; align-self: center; }
-.card { display: grid; grid-template-columns: 64px 1fr; grid-template-areas: 'photo info' 'spray spray'; grid-template-rows: auto 1fr; align-items: center; justify-items: start; width: 196px; padding: 8px; gap: 0 10px; background: var(--male); border: 1px solid #7fa6da; border-radius: var(--radius); box-shadow: 0 2px 6px rgb(15 42 79 / 0.2); white-space: normal; text-align: left; }
+.card { display: grid; grid-template-columns: 64px 1fr; grid-template-areas: 'photo info'; align-items: center; justify-items: start; width: 196px; padding: 8px; gap: 0 10px; background: var(--male); border: 1px solid #7fa6da; border-radius: var(--radius); box-shadow: 0 2px 6px rgb(15 42 79 / 0.2); white-space: normal; text-align: left; }
 .card.female { background: var(--female); border-color: #d79ab3; }
 .card.spouse { opacity: 1; }
 .avatar { width: 58px; height: 58px; border-radius: 50%; background: #a9c4e8; }
@@ -116,7 +116,9 @@ app-tree-view { flex: 1; display: flex; flex-direction: column; min-width: 0; }
 .card .info { grid-area: info; display: flex; flex-direction: column; gap: 3px; min-width: 0; max-width: 100%; }
 /* In memory: a spray of white lilies on a soft cream band at the foot of the card, and a softened photo */
 .card.late img, .card.late .avatar { filter: grayscale(0.85) sepia(0.2); }
-.lily-spray { grid-area: spray; justify-self: stretch; align-self: end; width: auto; height: 30px; margin: 6px -8px -8px; background: linear-gradient(transparent, #fbf6ea); border-radius: 0 0 9px 9px; }
+.card.late { position: relative; overflow: hidden; background: linear-gradient(160deg, var(--male) 55%, #f6f1e4); }
+.card.late.female { background: linear-gradient(160deg, var(--female) 55%, #f8efe6); }
+.lily-spray { position: absolute; right: 2px; bottom: 2px; width: 84px; height: 28px; pointer-events: none; }
 .couple.selected > .card:first-child, .card.selected { outline: 3px solid var(--accent); }
 .toggle { margin-top: 4px; padding: 0 9px; min-width: 32px; height: 22px; border-radius: 99px; font-size: 12px; font-weight: 700; justify-content: center; background: var(--primary); color: #fff; border-color: var(--primary); position: relative; z-index: 1; }
 
