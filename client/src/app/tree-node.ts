@@ -19,9 +19,11 @@ import { TreeContext } from './tree-context';
             <span class="avatar">{{ initials(p.name) }}</span>
           }
           <span class="name">{{ p.name }}</span>
-          <span class="years">{{ lifespan(p) }}</span>
           @if (cardPlace(p); as place) {
             <span class="place">{{ place }}</span>
+          }
+          @if (lifespan(p); as years) {
+            <span class="years">{{ years }}</span>
           }
         </button>
         @for (s of spouses(); track s.id) {
@@ -33,9 +35,11 @@ import { TreeContext } from './tree-context';
               <span class="avatar">{{ initials(s.p.name) }}</span>
             }
             <span class="name">{{ s.p.name }}</span>
-            <span class="years">{{ lifespan(s.p) }}</span>
             @if (cardPlace(s.p); as place) {
               <span class="place">{{ place }}</span>
+            }
+            @if (lifespan(s.p); as years) {
+              <span class="years">{{ years }}</span>
             }
           </button>
         }
