@@ -294,8 +294,8 @@ app-simple-view { flex: 1; overflow-y: auto; }
 .simple .kid { width: 100%; display: flex; align-items: center; gap: 10px; text-align: left; background: #fff; border: 1px solid #c7d8ee; border-left: 4px solid #7fa6da; border-radius: 10px; padding: 6px 10px; cursor: pointer; }
 .simple .kid.female { border-left-color: #d79ab3; }
 .simple .kid:hover { background: #f5f9ff; }
-.simple .kid img, .simple .kid .avatar { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; object-position: top; flex: none; font-size: 14px; }
+.simple .kid img, .simple .kid .avatar { width: 64px; height: 80px; border-radius: 6px; object-fit: cover; object-position: 50% 20%; border: 2px solid #fff; box-shadow: 0 1px 3px rgb(15 42 79 / 0.25); box-sizing: border-box; flex: none; font-size: 18px; }
 .simple .kid .who { flex: 1; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
-.simple .kid b { font-size: 14px; color: var(--ink); }
+.simple .kid b { font-size: 15px; color: var(--ink); }
 .simple .kid small { font-size: 12px; color: var(--muted); }
 .simple .kid .count { font-size: 12px; font-weight: 600; color: var(--primary); white-space: nowrap; }

@@ -18,7 +18,7 @@ const DEFAULT_DEPTH = 3; // levels open the first time a visitor opens a tree
       <div class="view-title">
         <h2>{{ tree().title }}</h2>
         @if (!simple()) {
-          <button type="button" class="view-link" (click)="simple.set(true)">{{ tree().title }} (Simplified View)</button>
+          <button type="button" class="view-link" (click)="simple.set(true)">(Simplified View)</button>
         }
       </div>
       @if (simple()) {
