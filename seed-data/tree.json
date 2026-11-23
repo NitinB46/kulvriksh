@@ -4514,9 +4514,6 @@
     },
     "P0273": {
       "name": "Madhu",
-      "birth": {
-        "place": "DOP"
-      },
       "parents": [
         "P0268"
       ],
@@ -4545,9 +4542,6 @@
     },
     "P0275": {
       "name": "Gaurav Dayal",
-      "birth": {
-        "place": "DOP"
-      },
       "parents": [
         "P0271"
       ],
@@ -4579,9 +4573,6 @@
     },
     "P0277": {
       "name": "Anubhav Dayal",
-      "birth": {
-        "place": "DOP"
-      },
       "parents": [
         "P0272"
       ],
@@ -4659,9 +4650,6 @@
     },
     "P0284": {
       "name": "Unknown",
-      "birth": {
-        "place": "DOP"
-      },
       "parents": [
         "P0283"
       ],
@@ -4673,9 +4661,6 @@
     },
     "P0285": {
       "name": "Mahendra Prasad",
-      "birth": {
-        "place": "DOP"
-      },
       "notes": "Retd. IRS",
       "parents": [
         "P0270"
@@ -4744,9 +4729,6 @@
     },
     "P0290": {
       "name": "Virendra prasad",
-      "birth": {
-        "place": "DOP"
-      },
       "parents": [
         "P0270"
       ],
@@ -4758,9 +4740,6 @@
     },
     "P0291": {
       "name": "Narendra Prasad",
-      "birth": {
-        "place": "DOP"
-      },
       "parents": [
         "P0270"
       ],
@@ -4772,9 +4751,6 @@
     },
     "P0292": {
       "name": "Satish Prasad",
-      "birth": {
-        "place": "DOP"
-      },
       "parents": [
         "P0270"
       ],
@@ -4786,9 +4762,6 @@
     },
     "P0293": {
       "name": "Surendra Prasad",
-      "birth": {
-        "place": "DOP"
-      },
       "parents": [
         "P0270"
       ],
@@ -4800,9 +4773,6 @@
     },
     "P0294": {
       "name": "Ravindra Prasad",
-      "birth": {
-        "place": "DOP"
-      },
       "parents": [
         "P0270"
       ],
@@ -5498,9 +5468,6 @@
     },
     "P0340": {
       "name": "Arav",
-      "birth": {
-        "place": "DOP"
-      },
       "parents": [],
       "spouses": [],
       "show": {
@@ -5511,9 +5478,6 @@
     },
     "P0341": {
       "name": "Varad",
-      "birth": {
-        "place": "DOP"
-      },
       "parents": [
         "P0327",
         "P0328"
@@ -5538,9 +5502,6 @@
     },
     "P0343": {
       "name": "Naman",
-      "birth": {
-        "place": "DOP"
-      },
       "parents": [
         "P0329",
         "P0330"
@@ -5553,9 +5514,6 @@
     },
     "P0344": {
       "name": "Gaurav",
-      "birth": {
-        "place": "DOP"
-      },
       "parents": [
         "P0332",
         "P0333"
@@ -5597,9 +5555,6 @@
     },
     "P0347": {
       "name": "Nupur",
-      "birth": {
-        "place": "DOP"
-      },
       "parents": [
         "P0336",
         "P0337"
@@ -5624,9 +5579,6 @@
     },
     "P0349": {
       "name": "Anant",
-      "birth": {
-        "place": "DOP"
-      },
       "parents": [
         "P0338",
         "P0339"
@@ -5995,9 +5947,6 @@
     },
     "P0373": {
       "name": "Neha",
-      "birth": {
-        "place": "DOP"
-      },
       "parents": [
         "P0323",
         "P0324"
@@ -6027,9 +5976,6 @@
     },
     "P0375": {
       "name": "Chandni",
-      "birth": {
-        "place": "DOP"
-      },
       "parents": [
         "P0323",
         "P0324"
@@ -6145,9 +6091,6 @@
     },
     "P0382": {
       "name": "Samridhi",
-      "birth": {
-        "place": "DOP"
-      },
       "parents": [
         "P0373",
         "P0374"
@@ -6160,9 +6103,6 @@
     },
     "P0383": {
       "name": "Niranjan",
-      "birth": {
-        "place": "DOP"
-      },
       "parents": [
         "P0306",
         "P0307"
@@ -6175,9 +6115,6 @@
     },
     "P0384": {
       "name": "Manoranjan",
-      "birth": {
-        "place": "DOP"
-      },
       "parents": [
         "P0306",
         "P0307"
@@ -6784,9 +6721,6 @@
     },
     "P0416": {
       "name": "Unknown",
-      "birth": {
-        "place": "DOP"
-      },
       "parents": [],
       "spouses": [],
       "show": {
@@ -6797,9 +6731,6 @@
     },
     "P0417": {
       "name": "Unknown",
-      "birth": {
-        "place": "DOP"
-      },
       "parents": [],
       "spouses": [],
       "show": {
@@ -6810,9 +6741,6 @@
     },
     "P0418": {
       "name": "Unknown",
-      "birth": {
-        "place": "DOP"
-      },
       "parents": [],
       "spouses": [],
       "show": {
@@ -6823,9 +6751,6 @@
     },
     "P0419": {
       "name": "Unknown",
-      "birth": {
-        "place": "DOP"
-      },
       "parents": [],
       "spouses": [],
       "show": {
@@ -6836,9 +6761,6 @@
     },
     "P0420": {
       "name": "Unknown",
-      "birth": {
-        "place": "DOP"
-      },
       "parents": [],
       "spouses": [],
       "show": {
@@ -6849,9 +6771,6 @@
     },
     "P0421": {
       "name": "Unknown",
-      "birth": {
-        "place": "DOP"
-      },
       "parents": [],
       "spouses": [],
       "show": {
@@ -6862,9 +6781,6 @@
     },
     "P0422": {
       "name": "Unknown",
-      "birth": {
-        "place": "DOP"
-      },
       "parents": [],
       "spouses": [],
       "show": {
@@ -6875,9 +6791,6 @@
     },
     "P0423": {
       "name": "Unknown",
-      "birth": {
-        "place": "DOP"
-      },
       "parents": [],
       "spouses": [],
       "show": {

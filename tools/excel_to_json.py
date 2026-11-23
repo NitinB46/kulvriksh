@@ -19,7 +19,7 @@ NS = {
 }
 EMU_PX = 9525
 
-PLACEHOLDERS = {'dob', 'pob', 'dod', 'pod', 'dom', 'date of death', 'placeof death', 'place of death',
+PLACEHOLDERS = {'dob', 'dop', 'pob', 'dod', 'pod', 'dom', 'date of death', 'placeof death', 'place of death',
                 'name', 'wife name', 'husband name', 'date of birth', 'place of birth', '', '-'}
 DATE_RE = re.compile(r'^\s*([_\d]{1,3})\s*[./-]\s*([_\d]{1,3})\s*[./-]\s*(\d{2,4})\s*$')
 YEAR_RE = re.compile(r'^\s*(1[6-9]\d\d|20\d\d)\s*$')
