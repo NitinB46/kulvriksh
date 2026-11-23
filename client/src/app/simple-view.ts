@@ -166,7 +166,9 @@ export class SimpleView {
     const id = this.path()[this.path().length - 1];
     const p = people[id];
     if (!p) return [];
-    return [{ id, p }, ...p.spouses.map((s) => ({ id: s.id, p: people[s.id] })).filter((s) => !!s.p)];
+    const all = [{ id, p }, ...p.spouses.map((s) => ({ id: s.id, p: people[s.id] })).filter((s) => !!s.p)];
+    // husband first (top on phones, left on computers), then wife
+    return all.sort((a, b) => Number(a.p.gender === 'F') - Number(b.p.gender === 'F'));
   });
 
   protected children = computed(() => {
