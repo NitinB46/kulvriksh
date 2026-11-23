@@ -69,8 +69,16 @@ import { Logo } from './logo';
       <section class="story">
         <h2>How it began</h2>
         <ol class="lineage">
-          @for (n of lineage(); track n; let last = $last) {
-            <li>{{ n }}</li>
+          @for (n of lineage(); track n.name; let i = $index) {
+            <li>
+              @if (n.photo) {
+                <img [src]="'/' + n.photo" alt="" />
+              } @else {
+                <span class="avatar">{{ initials(n.name) }}</span>
+              }
+              <b>{{ n.name }}</b>
+              <small>Generation {{ i + 1 }}</small>
+            </li>
           }
         </ol>
         <p>The family grew from one line into the branches below. Each branch has its own tree, and the whole family can be seen together.</p>
@@ -170,12 +178,12 @@ export class HomePage implements OnInit {
     const d = this.api.data();
     const first = this.api.trees().find((t) => t.id !== this.mainTree()?.id);
     if (!d || !first) return [];
-    const chain: string[] = [];
+    const chain: { name: string; photo?: string }[] = [];
     let cur = d.people[first.root]?.parents[0];
     const seen = new Set<string>();
     while (cur && d.people[cur] && !seen.has(cur)) {
       seen.add(cur);
-      chain.unshift(d.people[cur].name);
+      chain.unshift({ name: d.people[cur].name, photo: d.people[cur].photo });
       cur = d.people[cur].parents[0];
     }
     return chain;
