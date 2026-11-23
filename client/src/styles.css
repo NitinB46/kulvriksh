@@ -291,7 +291,7 @@ app-simple-view { flex: 1; overflow-y: auto; }
 .simple-couple .card.late { padding-bottom: 30px; }
 .simple .kids-head { margin: 20px 0 8px; padding-left: 10px; border-left: 2px solid #9fbbe0; font-size: 12px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; color: var(--muted); }
 .simple .kids { list-style: none; margin: 0 0 0 16px; padding: 0 0 0 12px; border-left: 2px solid #9fbbe0; display: flex; flex-direction: column; gap: 8px; }
-.simple .kid { width: 100%; display: flex; align-items: center; gap: 10px; text-align: left; background: #fff; border: 1px solid #c7d8ee; border-left: 4px solid #7fa6da; border-radius: 10px; padding: 6px 10px; cursor: pointer; }
+.simple .kid { white-space: normal; width: 100%; display: flex; align-items: center; gap: 10px; text-align: left; background: #fff; border: 1px solid #c7d8ee; border-left: 4px solid #7fa6da; border-radius: 10px; padding: 6px 10px; cursor: pointer; }
 .simple .kid.female { border-left-color: #d79ab3; }
 .simple .kid:hover { background: #f5f9ff; }
 .simple .kid img, .simple .kid .avatar { width: 64px; height: 80px; border-radius: 6px; object-fit: cover; object-position: 50% 20%; border: 2px solid #fff; box-shadow: 0 1px 3px rgb(15 42 79 / 0.25); box-sizing: border-box; flex: none; font-size: 18px; }
@@ -299,3 +299,5 @@ app-simple-view { flex: 1; overflow-y: auto; }
 .simple .kid b { font-size: 15px; color: var(--ink); }
 .simple .kid small { font-size: 12px; color: var(--muted); }
 .simple .kid .count { font-size: 12px; font-weight: 600; color: var(--primary); white-space: nowrap; }
+.nl { display: block; }
+.simple .kid .count { flex: none; }

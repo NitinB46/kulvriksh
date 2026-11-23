@@ -1,7 +1,7 @@
 import { Component, computed, inject, input } from '@angular/core';
 import { Api } from './api.service';
 import { ViewState } from './view-state';
-import { cardPlace, initials, isLate, lifespan } from './family';
+import { cardPlace, initials, isLate, lifespan, nameLines } from './family';
 import { TreeContext } from './tree-context';
 import { Lily } from './lily';
 
@@ -22,7 +22,7 @@ import { Lily } from './lily';
             }
           </span>
           <span class="info">
-            <span class="name">{{ p.name }}</span>
+            <span class="name">@for (l of nameLines(p.name); track $index) { <span class="nl">{{ l }}</span> }</span>
             @if (cardPlace(p); as place) {
               <span class="place">{{ place }}</span>
             }
@@ -45,7 +45,7 @@ import { Lily } from './lily';
               }
             </span>
             <span class="info">
-              <span class="name">{{ s.p.name }}</span>
+              <span class="name">@for (l of nameLines(s.p.name); track $index) { <span class="nl">{{ l }}</span> }</span>
               @if (cardPlace(s.p); as place) {
                 <span class="place">{{ place }}</span>
               }
@@ -86,6 +86,7 @@ export class TreeNode {
   protected lifespan = lifespan;
   protected cardPlace = cardPlace;
   protected isLate = isLate;
+  protected nameLines = nameLines;
 
   protected person = computed(() => this.api.data()?.people[this.id()]);
   protected spouses = computed(() =>

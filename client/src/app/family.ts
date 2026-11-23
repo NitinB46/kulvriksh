@@ -79,3 +79,9 @@ export function label(data: FamilyData, id: string): string {
   const ls = lifespan(p);
   return `${p.name}${ls ? ' (' + ls + ')' : ''} · ${id}`;
 }
+
+/** A name of three or more words is shown on two lines, with the last name on the second: "Madan Gopal" / "Bhatnagar". */
+export function nameLines(name: string): string[] {
+  const words = name.trim().split(/\s+/);
+  return words.length >= 3 ? [words.slice(0, -1).join(' '), words[words.length - 1]] : [name.trim()];
+}

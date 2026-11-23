@@ -1,7 +1,7 @@
 import { Component, ElementRef, computed, effect, inject, input, signal, untracked } from '@angular/core';
 import { Api } from './api.service';
 import { ViewState } from './view-state';
-import { cardPlace, initials, isLate, lifespan } from './family';
+import { cardPlace, initials, isLate, lifespan, nameLines } from './family';
 import { Lily } from './lily';
 import { Person } from './models';
 
@@ -41,7 +41,7 @@ import { Person } from './models';
                 }
               </span>
               <span class="info">
-                <span class="name">{{ c.p.name }}</span>
+                <span class="name">@for (l of nameLines(c.p.name); track $index) { <span class="nl">{{ l }}</span> }</span>
                 @if (cardPlace(c.p); as place) {
                   <span class="place">{{ place }}</span>
                 }
@@ -68,7 +68,7 @@ import { Person } from './models';
                   <span class="avatar">{{ initials(k.p.name) }}</span>
                 }
                 <span class="who">
-                  <b>{{ k.p.name }}</b>
+                  <b>@for (l of nameLines(k.p.name); track $index) { <span class="nl">{{ l }}</span> }</b>
                   @if (k.spouses) {
                     <small>♥ {{ k.spouses }}</small>
                   }
@@ -94,6 +94,7 @@ export class SimpleView {
   protected lifespan = lifespan;
   protected cardPlace = cardPlace;
   protected isLate = isLate;
+  protected nameLines = nameLines;
   readonly focus = signal<string>('');
   private host = inject<ElementRef<HTMLElement>>(ElementRef);
 
