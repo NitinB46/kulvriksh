@@ -41,14 +41,7 @@ import { Logo } from './logo';
         </p>
         <a routerLink="/tree" class="cta">Explore the Family Tree <span aria-hidden="true">→</span></a>
       </div>
-      <div class="hero-art" [class.playing]="intro()" aria-hidden="true">
-      @if (intro()) {
-          <div class="intro" aria-hidden="true">
-            @for (ph of introSlides(); track $index; let i = $index) {
-              <img class="slide" [src]="'/' + ph" alt="" [style.animation-delay]="i * 0.5 + 's'" />
-            }
-          </div>
-        }
+      <div class="hero-art" aria-hidden="true">
 
         @for (f of heroFaces(); track f.id; let i = $index) {
           <figure [class]="'blend blend-' + i">
@@ -133,16 +126,7 @@ export class HomePage implements OnInit {
   protected initials = initials;
   protected loadError = signal(false);
 
-  /** 5-second intro: every generation's faces appear softly, top to bottom, then the banner shows. Once per visit. */
-  protected intro = signal(false);
-
   async ngOnInit() {
-    let seen = false;
-    try { seen = sessionStorage.getItem('introSeen') === '1'; sessionStorage.setItem('introSeen', '1'); } catch {}
-    if (!seen && !window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) {
-      this.intro.set(true);
-      setTimeout(() => this.intro.set(false), 5600);
-    }
     try {
       if (!this.api.data()) await this.api.init();
     } catch {
@@ -215,37 +199,6 @@ export class HomePage implements OnInit {
     const step = Math.max(1, Math.floor(photos.length / 40));
     return photos.filter((_, i) => i % step === 0).slice(0, 40);
   });
-
-  /** photos grouped by generation from the founder down, a few per generation, for the intro */
-  protected generationRows = computed(() => {
-    const d = this.api.data();
-    const root = this.mainTree()?.root;
-    if (!d || !root) return [];
-    const rows: string[][] = [];
-    const seen = new Set<string>();
-    let level = [root];
-    while (level.length) {
-      const photos: string[] = [];
-      const next: string[] = [];
-      for (const id of level) {
-        if (seen.has(id) || !d.people[id]) continue;
-        seen.add(id);
-        for (const pid of [id, ...d.people[id].spouses.map((s) => s.id)]) {
-          const ph = d.people[pid]?.photo;
-          if (ph && !photos.includes(ph)) photos.push(ph);
-        }
-        next.push(...(this.api.kids().get(id) ?? []));
-      }
-      // widen like a tree: one face at the top, more in each generation below
-      const step = Math.max(1, Math.floor(photos.length / 12));
-      rows.push(photos.filter((_, i) => i % step === 0).slice(0, Math.min(12, 1 + rows.length * 2)));
-      level = next;
-    }
-    return rows.filter((r) => r.length);
-  });
-
-  /** one face per generation, oldest first, that fly through the picture area */
-  protected introSlides = computed(() => this.generationRows().map((r) => r[Math.floor(r.length / 2)]));
 
   /** a few ancestor faces for the hero picture */
   protected heroFaces = computed(() => {

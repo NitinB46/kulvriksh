@@ -255,16 +255,3 @@ ul.plain .muted { margin-left: 6px; font-size: 13px; }
   .blend figcaption { font-size: 11px; }
 }
 
-/* intro: one face per generation flies in and out across the picture area, then the family picture fades in and stays */
-.hero-art .intro { position: absolute; inset: 0; z-index: 6; pointer-events: none; }
-.hero-art .slide { position: absolute; left: 50%; top: 50%; width: 220px; height: 260px; margin: -130px 0 0 -110px; object-fit: cover; object-position: top; opacity: 0;
-  filter: grayscale(0.8) sepia(0.15) contrast(1.05);
-  -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 45%, #000 40%, transparent 100%); mask-image: radial-gradient(ellipse 50% 50% at 50% 45%, #000 40%, transparent 100%);
-  animation: fly 1s ease-in-out forwards; }
-.hero-art.playing > figure { animation: art-in 1.2s ease 3.8s backwards; }
-@keyframes fly {
-  0% { opacity: 0; transform: translateX(160px) scale(0.7); }
-  45%, 55% { opacity: 0.7; transform: none; }
-  100% { opacity: 0; transform: translateX(-160px) scale(0.7); }
-}
-@keyframes art-in { from { opacity: 0; } }
