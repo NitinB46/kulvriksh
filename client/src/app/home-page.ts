@@ -77,8 +77,10 @@ import { Logo } from './logo';
               } @else {
                 <span class="avatar">{{ initials(n.name) }}</span>
               }
-              <b>{{ n.name }}</b>
-              <small>Generation {{ i + 1 }}</small>
+              <span class="who">
+                <b>{{ n.name }}</b>
+                <small>Generation {{ i + 1 }}</small>
+              </span>
             </li>
           }
         </ol>

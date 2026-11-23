@@ -221,12 +221,13 @@ ul.plain .muted { margin-left: 6px; font-size: 13px; }
 .story, .branches, .closing { padding: 72px var(--gutter) 0; }
 .story h2, .branches h2, .closing h2 { font-family: var(--display); font-size: 30px; margin-bottom: 22px; }
 .story h2::after, .branches h2::after { content: ''; display: block; width: 48px; height: 3px; margin-top: 10px; border-radius: 3px; background: var(--primary); }
-.story p { color: var(--muted); font-size: 16px; line-height: 1.6; max-width: 700px; margin: 8px auto 0; text-align: center; }
+.story p { color: var(--muted); font-size: 16px; line-height: 1.6; max-width: 700px; margin: 8px 0 0; }
 .lineage { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 18px; padding: 0; margin: 0 0 22px; list-style: none; position: relative; }
 .lineage::before { content: ''; position: absolute; left: 12%; right: 12%; top: 44px; border-top: 2px dashed #9fbbe0; }
 .lineage li { position: relative; display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; }
 .lineage img, .lineage .avatar { width: 88px; height: 88px; border-radius: 50%; object-fit: cover; object-position: top; border: 4px solid #fff; box-shadow: 0 4px 12px rgb(15 42 79 / 0.18); font-size: 26px; margin-bottom: 6px; }
 .lineage img { filter: grayscale(0.6) sepia(0.15); }
+.lineage .who { display: flex; flex-direction: column; gap: 2px; }
 .lineage b { font-size: 16px; }
 .lineage small { color: var(--muted); font-size: 13px; }
 .lineage-unused::before { content: counter(gen); display: inline-flex; width: 22px; height: 22px; margin-right: 8px; border-radius: 50%; background: var(--primary); color: #fff; font-size: 12px; align-items: center; justify-content: center; }
@@ -237,7 +238,7 @@ ul.plain .muted { margin-left: 6px; font-size: 13px; }
 .branch h3 { font-size: 18px; margin-top: 6px; }
 .branch p { margin: 0; color: var(--muted); font-size: 14px; }
 .branch .go { margin-top: 8px; color: var(--primary); font-weight: 600; font-size: 14px; }
-.closing { text-align: center; padding-bottom: 72px; margin-top: 72px; padding-top: 56px; background: linear-gradient(180deg, #e6effa, var(--bg)); }
+.closing { text-align: left; padding-bottom: 72px; margin-top: 72px; padding-top: 56px; background: linear-gradient(180deg, #e6effa, var(--bg)); }
 .closing p { color: var(--muted); margin: 0 0 24px; }
 .home-footer app-logo { width: 22px; height: 22px; vertical-align: -5px; margin-right: 6px; }
 .home-footer { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; padding: 22px var(--gutter); background: #0f2a4f; color: rgb(255 255 255 / 0.85); font-size: 14px; }
@@ -256,3 +257,22 @@ ul.plain .muted { margin-left: 6px; font-size: 13px; }
 }
 
 .closing .contact { color: var(--navy); font-weight: 700; background: #d9e7f8; padding: 2px 10px; border-radius: 99px; white-space: nowrap; }
+
+/* phones */
+@media (max-width: 640px) {
+  .toolbar { gap: 6px; padding: 8px 12px; }
+  .toolbar h2 { width: 100%; }
+  .tools { flex-wrap: nowrap; gap: 4px; }
+  .tools .lbl, .tools .sep, .tools .reset { display: none; }
+  .tools button { padding: 6px 10px; min-width: 36px; }
+  .story, .branches { padding-top: 48px; }
+  .lineage { grid-template-columns: 1fr; gap: 14px; }
+  .lineage::before { left: 34px; right: auto; top: 30px; bottom: 30px; border-top: 0; border-left: 2px dashed #9fbbe0; }
+  .lineage li { flex-direction: row; text-align: left; gap: 14px; }
+  .lineage img, .lineage .avatar { width: 68px; height: 68px; margin: 0; font-size: 20px; flex: none; }
+  .branch-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .branch { padding: 18px 10px 14px; }
+  .branch img, .branch .avatar.big { width: 76px; height: 76px; font-size: 24px; }
+  .branch h3 { font-size: 16px; }
+  .closing .contact { white-space: normal; }
+}

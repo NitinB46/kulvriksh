@@ -16,15 +16,15 @@ const DEFAULT_DEPTH = 3; // levels open the first time a visitor opens a tree
     <div class="toolbar">
       <h2>{{ tree().title }}</h2>
       <div class="tools">
-        <button type="button" (click)="expandAll()" title="Show everyone">⊕ Expand all</button>
-        <button type="button" (click)="collapseAll()" title="Show only the top person">⊖ Collapse all</button>
+        <button type="button" (click)="expandAll()" title="Show everyone">⊕<span class="lbl"> Expand all</span></button>
+        <button type="button" (click)="collapseAll()" title="Show only the top person">⊖<span class="lbl"> Collapse all</span></button>
         <span class="sep"></span>
         <button type="button" (click)="zoomBy(-0.1)" aria-label="Zoom out">−</button>
         <span class="zoom">{{ Math.round(zoom() * 100) }}%</span>
         <button type="button" (click)="zoomBy(0.1)" aria-label="Zoom in">+</button>
-        <button type="button" (click)="zoom.set(1)">Reset</button>
+        <button type="button" class="reset" (click)="zoom.set(startZoom)">Reset</button>
         <span class="sep"></span>
-        <button type="button" (click)="savePicture()" [disabled]="saving()">{{ saving() ? 'Saving…' : '⤓ Save as picture' }}</button>
+        <button type="button" (click)="savePicture()" [disabled]="saving()">{{ saving() ? 'Saving…' : '⤓' }}<span class="lbl">{{ saving() ? '' : ' Save as picture' }}</span></button>
       </div>
     </div>
     <div class="chart-scroll" #scroller (pointerdown)="dragStart($event)" (pointermove)="dragMove($event)"
@@ -46,7 +46,9 @@ export class TreeView implements TreeContext {
   protected api = inject(Api);
   private view = inject(ViewState);
   protected Math = Math;
-  protected zoom = signal(1);
+  /** phones start zoomed out so a whole couple and their children fit on screen */
+  protected readonly startZoom = typeof window !== 'undefined' && window.innerWidth < 640 ? 0.6 : 1;
+  protected zoom = signal(this.startZoom);
   protected saving = signal(false);
   private chart = viewChild.required<ElementRef<HTMLElement>>('chart');
   private scroller = viewChild.required<ElementRef<HTMLElement>>('scroller');
