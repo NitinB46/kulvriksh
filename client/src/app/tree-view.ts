@@ -59,8 +59,8 @@ export class TreeView implements TreeContext {
   protected api = inject(Api);
   private view = inject(ViewState);
   protected Math = Math;
-  /** phones start zoomed out so a whole couple and their children fit on screen */
-  protected readonly startZoom = typeof window !== 'undefined' && window.innerWidth < 640 ? 0.6 : 1;
+  /** default zoom: 80% on computers, 60% on phones so a couple and their children fit on screen */
+  protected readonly startZoom = typeof window !== 'undefined' && window.innerWidth < 640 ? 0.6 : 0.8;
   protected zoom = signal(this.startZoom);
   protected saving = signal(false);
   /** one family at a time instead of the whole chart */
