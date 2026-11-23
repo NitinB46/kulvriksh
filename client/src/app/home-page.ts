@@ -43,13 +43,9 @@ import { Logo } from './logo';
       </div>
       <div class="hero-art" [class.playing]="intro()" aria-hidden="true">
       @if (intro()) {
-          <div class="intro" aria-hidden="true" >
-            @for (g of generationRows(); track $index; let i = $index) {
-              <div class="intro-row" [style.animation-delay]="i * 0.45 + 's'">
-                @for (ph of g; track ph) {
-                  <img [src]="'/' + ph" alt="" />
-                }
-              </div>
+          <div class="intro" aria-hidden="true">
+            @for (ph of introSlides(); track $index; let i = $index) {
+              <img class="slide" [src]="'/' + ph" alt="" [style.animation-delay]="i * 0.5 + 's'" />
             }
           </div>
         }
@@ -247,6 +243,9 @@ export class HomePage implements OnInit {
     }
     return rows.filter((r) => r.length);
   });
+
+  /** one face per generation, oldest first, that fly through the picture area */
+  protected introSlides = computed(() => this.generationRows().map((r) => r[Math.floor(r.length / 2)]));
 
   /** a few ancestor faces for the hero picture */
   protected heroFaces = computed(() => {
