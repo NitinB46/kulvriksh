@@ -108,7 +108,7 @@ import { Logo } from './logo';
 
     <section class="closing">
       <h2>Know someone who's missing?</h2>
-      <p>Share names, dates and photos with R.K. Bhatnagar and they will be added to the respective family tree.</p>
+      <p>Share names, dates and photos with <strong class="contact">R.K. Bhatnagar</strong> and they will be added to the respective family tree.</p>
       <a routerLink="/tree" class="cta light">Open the Family Tree</a>
     </section>
 

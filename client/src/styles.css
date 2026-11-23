@@ -255,3 +255,4 @@ ul.plain .muted { margin-left: 6px; font-size: 13px; }
   .blend figcaption { font-size: 11px; }
 }
 
+.closing .contact { color: var(--navy); font-weight: 700; background: #d9e7f8; padding: 2px 10px; border-radius: 99px; white-space: nowrap; }
