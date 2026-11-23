@@ -3,6 +3,7 @@ import { toPng } from 'html-to-image';
 import { Api } from './api.service';
 import { ViewState } from './view-state';
 import { TreeNode } from './tree-node';
+import { SimpleView } from './simple-view';
 import { TreeContext } from './tree-context';
 import { Tree } from './models';
 
@@ -10,11 +11,19 @@ const DEFAULT_DEPTH = 3; // levels open the first time a visitor opens a tree
 
 @Component({
   selector: 'app-tree-view',
-  imports: [TreeNode],
+  imports: [TreeNode, SimpleView],
   providers: [{ provide: TreeContext, useExisting: TreeView }],
   template: `
     <div class="toolbar">
-      <h2>{{ tree().title }}</h2>
+      <div class="view-title">
+        <h2>{{ tree().title }}</h2>
+        @if (!simple()) {
+          <button type="button" class="view-link" (click)="simple.set(true)">{{ tree().title }} (Simplified View)</button>
+        }
+      </div>
+      @if (simple()) {
+        <button type="button" class="back-tree" (click)="simple.set(false)">← Back to tree view</button>
+      } @else {
       <div class="tools">
         <button type="button" (click)="expandAll()" title="Show everyone">⊕<span class="lbl"> Expand all</span></button>
         <button type="button" (click)="collapseAll()" title="Show only the top person">⊖<span class="lbl"> Collapse all</span></button>
@@ -26,8 +35,12 @@ const DEFAULT_DEPTH = 3; // levels open the first time a visitor opens a tree
         <span class="sep"></span>
         <button type="button" (click)="savePicture()" [disabled]="saving()">{{ saving() ? 'Saving…' : '⤓' }}<span class="lbl">{{ saving() ? '' : ' Save as picture' }}</span></button>
       </div>
+      }
     </div>
-    <div class="chart-scroll" #scroller (pointerdown)="dragStart($event)" (pointermove)="dragMove($event)"
+    @if (simple()) {
+      <app-simple-view [root]="tree().root" />
+    }
+    <div class="chart-scroll" [hidden]="simple()" #scroller (pointerdown)="dragStart($event)" (pointermove)="dragMove($event)"
       (pointerup)="dragEnd()" (pointercancel)="dragEnd()" (pointerleave)="dragEnd()">
       <div class="chart" #chart [style.zoom]="zoom()">
         @if (api.data()?.people?.[tree().root]) {
@@ -50,6 +63,8 @@ export class TreeView implements TreeContext {
   protected readonly startZoom = typeof window !== 'undefined' && window.innerWidth < 640 ? 0.6 : 1;
   protected zoom = signal(this.startZoom);
   protected saving = signal(false);
+  /** one family at a time instead of the whole chart */
+  protected simple = signal(false);
   private chart = viewChild.required<ElementRef<HTMLElement>>('chart');
   private scroller = viewChild.required<ElementRef<HTMLElement>>('scroller');
 

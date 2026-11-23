@@ -261,7 +261,7 @@ ul.plain .muted { margin-left: 6px; font-size: 13px; }
 /* phones */
 @media (max-width: 640px) {
   .toolbar { gap: 6px; padding: 8px 12px; }
-  .toolbar h2 { width: 100%; }
+  .view-title { width: 100%; }
   .tools { flex-wrap: nowrap; gap: 4px; }
   .tools .lbl, .tools .sep, .tools .reset { display: none; }
   .tools button { padding: 6px 10px; min-width: 36px; }
@@ -277,3 +277,25 @@ ul.plain .muted { margin-left: 6px; font-size: 13px; }
   .branch h3 { font-size: 16px; }
   .closing .contact { white-space: normal; }
 }
+
+/* simplified view: one family at a time */
+.view-title { display: flex; align-items: baseline; gap: 4px 12px; flex-wrap: wrap; }
+.view-link { border: 0; background: none; padding: 0; color: var(--primary); font: inherit; font-size: 14px; font-weight: 600; text-decoration: underline; cursor: pointer; }
+.back-tree { font-weight: 600; }
+app-simple-view { flex: 1; overflow-y: auto; }
+.simple { max-width: 560px; padding: 4px 16px 40px; }
+.simple .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; color: var(--muted); font-size: 14px; margin: 4px 0 12px; }
+.simple .crumb { border: 0; background: none; padding: 0; color: var(--primary); font: inherit; font-weight: 600; text-decoration: underline; cursor: pointer; }
+.simple-couple { display: inline-flex; max-width: 100%; }
+.simple-couple .card { width: auto; flex: 0 1 230px; min-width: 0; }
+.simple-couple .card.late { padding-bottom: 30px; }
+.simple .kids-head { margin: 20px 0 8px; padding-left: 10px; border-left: 2px solid #9fbbe0; font-size: 12px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; color: var(--muted); }
+.simple .kids { list-style: none; margin: 0 0 0 16px; padding: 0 0 0 12px; border-left: 2px solid #9fbbe0; display: flex; flex-direction: column; gap: 8px; }
+.simple .kid { width: 100%; display: flex; align-items: center; gap: 10px; text-align: left; background: #fff; border: 1px solid #c7d8ee; border-left: 4px solid #7fa6da; border-radius: 10px; padding: 6px 10px; cursor: pointer; }
+.simple .kid.female { border-left-color: #d79ab3; }
+.simple .kid:hover { background: #f5f9ff; }
+.simple .kid img, .simple .kid .avatar { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; object-position: top; flex: none; font-size: 14px; }
+.simple .kid .who { flex: 1; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.simple .kid b { font-size: 14px; color: var(--ink); }
+.simple .kid small { font-size: 12px; color: var(--muted); }
+.simple .kid .count { font-size: 12px; font-weight: 600; color: var(--primary); white-space: nowrap; }
