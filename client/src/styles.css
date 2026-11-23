@@ -305,6 +305,9 @@ app-simple-view { flex: 1; overflow-y: auto; }
 /* simplified view on phones: husband on top, wife below, heart in between, each card full width */
 @media (max-width: 640px) {
   .simple-couple { display: flex; flex-direction: column; align-items: stretch; gap: 2px; width: 100%; box-sizing: border-box; }
-  .simple-couple .card { flex: none; width: 100%; box-sizing: border-box; }
-  .simple-couple .link { align-self: center; font-size: 16px; line-height: 1; }
+  .simple-couple { padding: 4px; gap: 1px; }
+  .simple-couple .card, .simple-couple .card.late { flex: none; width: 100%; box-sizing: border-box; padding: 6px 96px 6px 6px; grid-template-columns: 52px 1fr; }
+  .simple-couple .card img, .simple-couple .card .avatar { width: 52px; height: 64px; }
+  .simple-couple .lily-spray { top: 50%; bottom: auto; right: 8px; transform: translateY(-50%); }
+  .simple-couple .link { align-self: center; font-size: 11px; line-height: 1; margin: 0; }
 }
