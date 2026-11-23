@@ -301,3 +301,10 @@ app-simple-view { flex: 1; overflow-y: auto; }
 .simple .kid .count { font-size: 12px; font-weight: 600; color: var(--primary); white-space: nowrap; }
 .nl { display: block; }
 .simple .kid .count { flex: none; }
+
+/* simplified view on phones: husband on top, wife below, heart in between, each card full width */
+@media (max-width: 640px) {
+  .simple-couple { display: flex; flex-direction: column; align-items: stretch; gap: 2px; width: 100%; box-sizing: border-box; }
+  .simple-couple .card { flex: none; width: 100%; box-sizing: border-box; }
+  .simple-couple .link { align-self: center; font-size: 16px; line-height: 1; }
+}
