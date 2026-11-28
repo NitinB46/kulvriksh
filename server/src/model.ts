@@ -18,6 +18,7 @@ export const PersonInput = z.object({
   birth: event,
   death: event,
   address: text(300),
+  location: text(120),
   bio: text(5000),
   notes: text(2000),
   parents: z.array(z.string()).max(2).optional(),
@@ -94,6 +95,8 @@ function applyFields(data: FamilyData, id: string, input: PersonInput) {
     birth: clean(input.birth),
     death: clean(input.death),
     address: input.address || undefined,
+    // keep the stored location when the form does not send one
+    location: input.location !== undefined ? input.location || undefined : prev?.location,
     bio: input.bio || undefined,
     notes: input.notes || undefined,
     photo: prev?.photo,

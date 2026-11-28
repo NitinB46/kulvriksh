@@ -11,6 +11,7 @@ export interface Person {
   birth?: LifeEvent;
   death?: LifeEvent;
   address?: string;
+  location?: string; // where the person lives now (city); shown publicly
   photo?: string; // e.g. "photos/P0042-1731500000.jpg"
   bio?: string;
   notes?: string;

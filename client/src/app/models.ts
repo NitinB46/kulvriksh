@@ -11,6 +11,7 @@ export interface Person {
   birth?: LifeEvent;
   death?: LifeEvent;
   address?: string;
+  location?: string;
   photo?: string;
   bio?: string;
   notes?: string;
