@@ -13,6 +13,7 @@ interface EditForm {
   birthPlace: string;
   deathDate: string;
   deathPlace: string;
+  location: string;
   address: string;
   notes: string;
   bio: string;
@@ -57,6 +58,10 @@ const fromTri = (t: TriState | undefined) => (t === true ? 'show' : t === false 
             @if (p.death?.date || p.death?.place) {
               <dt>Died</dt>
               <dd>{{ fmt(p.death?.date) }}{{ p.death?.date && p.death?.place ? ', ' : '' }}{{ p.death?.place }}</dd>
+            }
+            @if (p.location) {
+              <dt>Location</dt>
+              <dd>{{ p.location }}</dd>
             }
             @if (p.address) {
               <dt>Address</dt>
@@ -162,6 +167,7 @@ const fromTri = (t: TriState | undefined) => (t === true ? 'show' : t === false 
               <label>Date <input name="dd" [(ngModel)]="form.deathDate" placeholder="YYYY, YYYY-MM or YYYY-MM-DD" [class.invalid]="bad(form.deathDate)" /></label>
               <label>Place <input name="dp" [(ngModel)]="form.deathPlace" /></label>
             </fieldset>
+            <label>Location <input name="loc" [(ngModel)]="form.location" placeholder="City where they live (shown on the card)" /></label>
             <fieldset>
               <legend>Address</legend>
               <label>Address <textarea name="addr" rows="2" [(ngModel)]="form.address"></textarea></label>
@@ -248,7 +254,7 @@ export class PersonPanel {
   }
 
   private emptyForm(): EditForm {
-    return { name: '', gender: '', birthDate: '', birthPlace: '', deathDate: '', deathPlace: '', address: '', notes: '', bio: '',
+    return { name: '', gender: '', birthDate: '', birthPlace: '', deathDate: '', deathPlace: '', location: '', address: '', notes: '', bio: '',
       showDob: 'inherit', showAddress: 'inherit', parent1: null, parent2: null, spouses: [] };
   }
 
@@ -262,6 +268,7 @@ export class PersonPanel {
       birthPlace: p.birth?.place ?? '',
       deathDate: p.death?.date ?? '',
       deathPlace: p.death?.place ?? '',
+      location: p.location ?? '',
       address: p.address ?? '',
       notes: p.notes ?? '',
       bio: p.bio ?? '',
@@ -285,6 +292,7 @@ export class PersonPanel {
       gender: f.gender,
       birth: { date: f.birthDate.trim(), place: f.birthPlace.trim() },
       death: { date: f.deathDate.trim(), place: f.deathPlace.trim() },
+      location: f.location.trim(),
       address: f.address.trim(),
       notes: f.notes.trim(),
       bio: f.bio.trim(),

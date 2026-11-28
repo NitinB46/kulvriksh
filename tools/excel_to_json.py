@@ -655,6 +655,9 @@ def main(xlsx, out):
     for i, p in people.items():
         if i not in reach:
             out_people[i]['notes'] = ((out_people[i].get('notes') or '') + ' [Imported from Excel but not linked to a parent - please check]').strip()
+    for q in out_people.values():  # location starts as the place of birth
+        bp = (q.get('birth') or {}).get('place')
+        if bp and not q.get('location'): q['location'] = bp
     data = {'version': 1, 'trees': tree_list, 'people': out_people}
     with open(os.path.join(out, 'tree.json'), 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=1)
