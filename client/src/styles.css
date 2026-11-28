@@ -133,7 +133,7 @@ app-tree-view { flex: 1; display: flex; flex-direction: column; min-width: 0; }
 .panel h2 { font-size: 20px; margin: 8px 0 2px; padding-right: 28px; }
 .panel h3 { font-size: 14px; margin: 20px 0 8px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
 .photo-big { display: flex; justify-content: center; }
-.photo-big img { width: 180px; height: 180px; object-fit: cover; object-position: top; border-radius: 12px; }
+.photo-big img { height: 200px; width: auto; max-width: 100%; object-fit: contain; border-radius: 12px; box-shadow: 0 1px 4px rgba(15, 42, 79, 0.18); }
 .avatar.big { width: 120px; height: 120px; font-size: 40px; border-radius: 12px; }
 dl { display: grid; grid-template-columns: 80px 1fr; gap: 6px 10px; margin: 16px 0; font-size: 14px; }
 dt { color: var(--muted); }
