@@ -1,5 +1,5 @@
 {
- "version": 165,
+ "version": 170,
  "trees": [
   {
    "id": "whole-family",
@@ -815,8 +815,9 @@
    },
    "death": {
     "date": "2018-05-13",
-    "place": "Mandi"
+    "place": "Chandigarh"
    },
+   "location": "Mandi",
    "photo": "photos/img_2299047967.jpeg",
    "parents": [],
    "spouses": [
@@ -828,8 +829,7 @@
    "show": {
     "dob": null,
     "address": null
-   },
-   "location": "Mandi"
+   }
   },
   "P0037": {
    "name": "Neeraj Bhatnagar",
@@ -864,8 +864,9 @@
    },
    "death": {
     "date": "2020-09-03",
-    "place": "Dehra Dun"
+    "place": "Dehradun"
    },
+   "location": "Dehradun",
    "photo": "photos/img_4112265fd3.jpeg",
    "parents": [],
    "spouses": [
@@ -877,8 +878,7 @@
    "show": {
     "dob": null,
     "address": null
-   },
-   "location": "Jaipur"
+   }
   },
   "P0039": {
    "name": "Surendra Bhatnagar",
@@ -1066,8 +1066,9 @@
    "gender": "M",
    "birth": {
     "date": "1976-04-21",
-    "place": "Dallas"
+    "place": "Dehradun"
    },
+   "location": "Dallas",
    "photo": "photos/img_bdfb81b158.jpeg",
    "parents": [
     "P0031",
@@ -1082,15 +1083,15 @@
    "show": {
     "dob": null,
     "address": null
-   },
-   "location": "Dallas"
+   }
   },
   "P0048": {
    "name": "Vani Bhatnagar",
    "birth": {
     "date": "1977-12-08",
-    "place": "Dallas"
+    "place": "Jaipur"
    },
+   "location": "Dallas",
    "photo": "photos/img_e8bcf2997b.jpeg",
    "parents": [],
    "spouses": [
@@ -1102,8 +1103,7 @@
    "show": {
     "dob": null,
     "address": null
-   },
-   "location": "Dallas"
+   }
   },
   "P0049": {
    "name": "Richa Arya",
@@ -1238,8 +1238,9 @@
    "name": "Akshat Bhatnagar",
    "birth": {
     "date": "1994-10-31",
-    "place": "Pune"
+    "place": "Dehradun"
    },
+   "location": "Pune",
    "photo": "photos/img_525774f310.jpeg",
    "parents": [
     "P0033",
@@ -1249,8 +1250,7 @@
    "show": {
     "dob": null,
     "address": null
-   },
-   "location": "Pune"
+   }
   },
   "P0056": {
    "name": "Shrey Kapoor",
