@@ -43,7 +43,7 @@ import { Person } from './models';
               <span class="info">
                 <span class="name">@for (l of nameLines(c.p.name); track $index) { <span class="nl">{{ l }}</span> }</span>
                 @if (cardPlace(c.p); as place) {
-                  <span class="place">{{ place }}</span>
+                  <span class="place" [class.loc]="!!c.p.location?.trim()" [attr.title]="c.p.location?.trim() ? 'Location' : null">{{ place }}</span>
                 }
                 @if (lifespan(c.p); as years) {
                   <span class="years">{{ years }}</span>

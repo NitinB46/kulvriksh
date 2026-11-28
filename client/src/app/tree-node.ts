@@ -24,7 +24,7 @@ import { Lily } from './lily';
           <span class="info">
             <span class="name">@for (l of nameLines(p.name); track $index) { <span class="nl">{{ l }}</span> }</span>
             @if (cardPlace(p); as place) {
-              <span class="place">{{ place }}</span>
+              <span class="place" [class.loc]="!!p.location?.trim()" [attr.title]="p.location?.trim() ? 'Location' : null">{{ place }}</span>
             }
             @if (lifespan(p); as years) {
               <span class="years">{{ years }}</span>
@@ -47,7 +47,7 @@ import { Lily } from './lily';
             <span class="info">
               <span class="name">@for (l of nameLines(s.p.name); track $index) { <span class="nl">{{ l }}</span> }</span>
               @if (cardPlace(s.p); as place) {
-                <span class="place">{{ place }}</span>
+                <span class="place" [class.loc]="!!s.p.location?.trim()" [attr.title]="s.p.location?.trim() ? 'Location' : null">{{ place }}</span>
               }
               @if (lifespan(s.p); as years) {
                 <span class="years">{{ years }}</span>

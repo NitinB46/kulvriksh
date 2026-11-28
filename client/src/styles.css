@@ -311,3 +311,11 @@ app-simple-view { flex: 1; overflow-y: auto; }
   .simple-couple .lily-spray { top: 50%; bottom: auto; right: 8px; transform: translateY(-50%); }
   .simple-couple .link { align-self: center; font-size: 11px; line-height: 1; margin: 0; }
 }
+
+/* Small map pin before a card's location (inline SVG, no download) */
+.place.loc::before {
+  content: ""; display: inline-block; width: 9px; height: 11px; margin-right: 3px; vertical-align: -1px;
+  background-color: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 16'%3E%3Cpath d='M6 0a6 6 0 0 0-6 6c0 4.5 6 10 6 10s6-5.5 6-10a6 6 0 0 0-6-6zm0 8.2A2.2 2.2 0 1 1 6 3.8a2.2 2.2 0 0 1 0 4.4z'/%3E%3C/svg%3E") no-repeat center / contain;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 16'%3E%3Cpath d='M6 0a6 6 0 0 0-6 6c0 4.5 6 10 6 10s6-5.5 6-10a6 6 0 0 0-6-6zm0 8.2A2.2 2.2 0 1 1 6 3.8a2.2 2.2 0 0 1 0 4.4z'/%3E%3C/svg%3E") no-repeat center / contain;
+}
